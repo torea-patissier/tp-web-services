@@ -7,6 +7,7 @@ const personneRoutes = require('./src/routes/personne.route');
 const livreGenreRoutes = require('./src/routes/livre_genre.route');
 const livreRoutes = require('./src/routes/livre.route');
 const genreRoutes = require('./src/routes/genre.route');
+const couvertureRoutes = require ('./src/routes/couverture.route');
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -16,6 +17,8 @@ app.use('/api/personnes', personneRoutes);
 app.use('/api/livre_genres', livreGenreRoutes);
 app.use('/api/livres',livreRoutes);
 app.use('/api/genres',genreRoutes);
+app.use('/api/couvertures',couvertureRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`Serveur en écoute sur le port ${PORT}`);
