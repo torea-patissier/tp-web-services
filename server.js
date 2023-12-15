@@ -1,16 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 require('dotenv').config()
 const app = express();
 const URL = 'http://localhost';
 const PORT = process.env.PORT;
 const personneRoutes = require('./src/routes/personne.route');
-const livreGenreRoutes = require('./src/routes/livre_genre.route');
 const livreRoutes = require('./src/routes/livre.route');
 const genreRoutes = require('./src/routes/genre.route');
 const couvertureRoutes = require ('./src/routes/couverture.route');
 const auteurRoutes = require ('./src/routes/auteur.route');
 const authRoutes = require('./src/routes/auth.route');
+
+const corsOptions = {
+  origin: "http://localhost:8082",
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -18,7 +26,6 @@ app.get('/', (req, res) => {
 });
 app.use('/api/auth', authRoutes);
 app.use('/api/personnes', personneRoutes);
-app.use('/api/livre_genres', livreGenreRoutes);
 app.use('/api/livres', livreRoutes);
 app.use('/api/genres', genreRoutes);
 app.use('/api/couvertures', couvertureRoutes);

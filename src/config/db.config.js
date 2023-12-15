@@ -1,8 +1,8 @@
 require('dotenv').config()
 module.exports = {
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  port: 8889,
-  database: 'tp-web-services'
+  host: process.env.HOST,
+  user: process.env.LOGIN,
+  password: process.env.PASSWORD,
+  port: process.env.DATABASE_PORT,
+  database: process.env.DATABASE
 }
