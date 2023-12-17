@@ -4,7 +4,9 @@ const livreController = {
 
   getAllLivres: async function(req, res) {
     try {
-      const results = await livre.getAllLivres();
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const results = await livre.getAllLivres(page, limit);
       res.status(200).json(results);
     } catch (error) {
       res.status(500).send(error);

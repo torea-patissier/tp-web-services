@@ -2,7 +2,7 @@ const Genre = require('../models/genre.model');
 
 const GenreController = {
 
-  getAllGenres: async function(req, res) {
+  getAllGenres: async function (req, res) {
     try {
       const results = await Genre.getAllGenres();
       res.status(200).json(results);
@@ -11,7 +11,7 @@ const GenreController = {
     }
   },
 
-  getGenreById: async function(req, res) {
+  getGenreById: async function (req, res) {
     try {
       const id = req.params.id;
       const result = await Genre.getGenreById(id);
@@ -25,7 +25,7 @@ const GenreController = {
     }
   },
 
-  addGenre: async function(req, res) {
+  addGenre: async function (req, res) {
     try {
       const nouvelleGenre = req.body;
       await Genre.addGenre(nouvelleGenre);
@@ -37,22 +37,22 @@ const GenreController = {
     }
   },
 
-  updateGenre: async function(req, res) {
+  updateGenre: async function (req, res) {
     try {
       const id = req.params.id;
       const GenreToUpdate = req.body;
       await Genre.updateGenre(id, GenreToUpdate);
-      res.status(200).json({message : "Informations du Genre modifiées"});
+      res.status(200).json({message: "Informations du Genre modifiées"});
     } catch (error) {
       res.status(500).send(error);
     }
   },
 
-  deleteGenre: async function(req, res) {
+  deleteGenre: async function (req, res) {
     try {
       const id = req.params.id;
       await Genre.deleteGenre(id);
-      res.status(200).json({message : 'Genre supprimé'});
+      res.status(200).json({message: 'Genre supprimé'});
     } catch (error) {
       res.status(500).send(error);
     }

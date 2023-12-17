@@ -2,9 +2,11 @@ const sql = require('./db');
 
 const livre = {
 
-  getAllLivres: function() {
+  getAllLivres: function(page, limit) {
+    const startIndex = (page - 1) * limit;
+
     return new Promise((resolve, reject) => {
-      sql.query('SELECT * FROM livre', (error, results) => {
+      sql.query('SELECT * FROM livre LIMIT ? OFFSET ?', [limit, startIndex], (error, results) => {
         if (error) {
           reject(error);
         } else {
