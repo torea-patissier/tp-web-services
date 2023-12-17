@@ -10,7 +10,7 @@ const livreController = {
       res.status(200).json(results);
     } catch (error) {
       res.status(500).send(error);
-    }
+     }
   },
 
   getLivreById: async function(req, res) {
