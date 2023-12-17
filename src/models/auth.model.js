@@ -10,7 +10,7 @@ function generateAccessToken(user) {
   return {
     id: user.id,
     email: user.email,
-    access_token : jwt.sign(user, `${process.env.JWT_SECRET}`)
+    access_token : jwt.sign(user, `${process.env.JWT_SECRET}`, { expiresIn: '1800s' })
   };
 }
 

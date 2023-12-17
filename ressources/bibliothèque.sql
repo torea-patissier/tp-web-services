@@ -48,6 +48,12 @@ CREATE TABLE livre_genre (
                                      REFERENCES genre(id)
 );
 
+CREATE TABLE utilisateur (
+                             id        int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                             email     VARCHAR(200) NOT NULL,
+                             password  VARCHAR(255) NOT NULL,
+);
+
 
 INSERT INTO auteur (prenom, nom, telephone, email) VALUES
                                                        ('Bruce', 'Eckel','0605040302', 'thinking@me.net'),

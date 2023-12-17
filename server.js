@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+
 
 require('dotenv').config()
 const app = express();
@@ -18,8 +20,17 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
+app.use(limiter);
 
 app.get('/', (req, res) => {
   res.send('Bienvenue sur mon API !');
