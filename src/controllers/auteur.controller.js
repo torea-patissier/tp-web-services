@@ -2,6 +2,17 @@ const Auteur = require('../models/auteur.model');
 
 const AuteurController = {
 
+  filterAuteur: async function(req, res) {
+    try {
+      const auteurToFind = req.query.auteur || ''
+      console.log('\n req.query : \n',req.query);
+      const results = await Auteur.filterAuteur(auteurToFind);
+      res.status(200).json(results);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
+
   getAllAuteurs: async function(req, res) {
     try {
       const results = await Auteur.getAllAuteurs();

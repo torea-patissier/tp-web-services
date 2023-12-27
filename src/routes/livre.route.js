@@ -7,6 +7,7 @@ const middleware = [
   authMiddleware.verifyToken
 ]
 
+router.get('/filter', ...middleware, livreController.filterLivres);
 router.get('/', ...middleware, livreController.getAllLivres);
 router.get('/:id', ...middleware, livreController.getLivreById);
 router.post('/', ...middleware, livreController.addLivre);

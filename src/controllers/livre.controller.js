@@ -2,6 +2,15 @@ const livre = require('../models/livre.model');
 
 const livreController = {
 
+  filterLivres: async function(req,res){
+    try {
+      const result = await livre.filterLivres(req);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
+
   getAllLivres: async function(req, res) {
     try {
       const page = parseInt(req.query.page) || 1;

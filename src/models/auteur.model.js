@@ -2,6 +2,19 @@ const sql = require('./db');
 
 const Auteur = {
 
+  filterAuteur: function(auteurInfo){
+    let query = `SELECT * FROM auteur WHERE nom LIKE ?`;
+    return new Promise((resolve, reject) => {
+      sql.query(query,[`%${auteurInfo}%`], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  },
+
   getAllAuteurs: function() {
     return new Promise((resolve, reject) => {
       sql.query('SELECT * FROM auteur', (error, results) => {
