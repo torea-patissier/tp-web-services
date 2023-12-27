@@ -2,7 +2,6 @@ const sql = require('./db');
 
 const livre = {
 
-
   filterLivres: function (req) {
     const request = req.query.titre;
     return new Promise((resolve, reject) => {

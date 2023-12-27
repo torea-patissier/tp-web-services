@@ -16,7 +16,7 @@ Ce projet est une application backend construite avec NodeJS, ExpressJS, et une 
 
 2. Installez les dépendances : `npm install`
 
-3. Configurez votre base de données MySQL en local. Créez une base de données et exécutez le script SQL fourni pour initialiser les tables.
+3. Configurez votre base de données MySQL en local. Créez une base de données et exécutez le script SQL fourni pour initialiser les tables (database.sql) .
 
 4. Créez un fichier `.env` à la racine du projet et configurez vos variables d'environnement
 
